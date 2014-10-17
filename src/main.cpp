@@ -15,7 +15,7 @@
     cannot, write to the Free Software Foundation, 59 Temple Place
     Suite 330, Boston, MA 02111-1307, USA.  Or www.fsf.org
 
-    Copyright ©2005-2007 puck_lock
+    Copyright ï¿½2005-2007 puck_lock
     with contributions from others; see the CREDITS file
 
     ----------------------
@@ -165,7 +165,7 @@ static const char* shortHelp_text =
 "  --bpm          (number)     Set the tempo/bpm\n"
 "  --albumArtist  (string)     Set the album artist tag\n"
 "  --compilation  (boolean)    Set the compilation flag (true or false)\n"
-"  --hdvideo      (boolean)    Set the hdvideo flag (true or false)\n"
+"  --hdvideo      (number)     Set the hdvideo flag (0=SD 1=720p 2=1080p)\n"
 "  --advisory     (string*)    Content advisory (*values: 'clean', 'explicit')\n"
 "  --stik         (string*)    Sets the iTunes \"stik\" atom (see --longhelp)\n"
 "  --description  (string)     Set the description tag\n"
@@ -228,26 +228,26 @@ static const char* longHelp_text =
 "------------------------------------------------------------------------------------------------\n"
 " Tag setting options:\n"
 "\n"
-"  --artist           ,  -a   (str)    Set the artist tag: \"moov.udta.meta.ilst.\302©ART.data\"\n"
-"  --title            ,  -s   (str)    Set the title tag: \"moov.udta.meta.ilst.\302©nam.data\"\n"
-"  --album            ,  -b   (str)    Set the album tag: \"moov.udta.meta.ilst.\302©alb.data\"\n"
-"  --genre            ,  -g   (str)    Set the genre tag: \"\302©gen\" (custom) or \"gnre\" (standard).\n"
+"  --artist           ,  -a   (str)    Set the artist tag: \"moov.udta.meta.ilst.\302\251ART.data\"\n"
+"  --title            ,  -s   (str)    Set the title tag: \"moov.udta.meta.ilst.\302\251nam.data\"\n"
+"  --album            ,  -b   (str)    Set the album tag: \"moov.udta.meta.ilst.\302\251alb.data\"\n"
+"  --genre            ,  -g   (str)    Set the genre tag: \"\302\251gen\" (custom) or \"gnre\" (standard).\n"
 "                                          see the standard list with \"AtomicParsley --genre-list\"\n"
 "  --tracknum         ,  -k   (num)[/tot]  Set the track number (or track number & total tracks).\n"
 "  --disk             ,  -d   (num)[/tot]  Set the disk number (or disk number & total disks).\n"
-"  --comment          ,  -c   (str)    Set the comment tag: \"moov.udta.meta.ilst.\302©cmt.data\"\n"
-"  --year             ,  -y   (num|UTC)    Set the year tag: \"moov.udta.meta.ilst.\302©day.data\"\n"
+"  --comment          ,  -c   (str)    Set the comment tag: \"moov.udta.meta.ilst.\302\251cmt.data\"\n"
+"  --year             ,  -y   (num|UTC)    Set the year tag: \"moov.udta.meta.ilst.\302\251day.data\"\n"
 "                                          set with UTC \"2006-09-11T09:00:00Z\" for Release Date\n"
-"  --lyrics           ,  -l   (str)    Set the lyrics tag: \"moov.udta.meta.ilst.\302©lyr.data\"\n"
-"  --composer         ,  -w   (str)    Set the composer tag: \"moov.udta.meta.ilst.\302©wrt.data\"\n"
+"  --lyrics           ,  -l   (str)    Set the lyrics tag: \"moov.udta.meta.ilst.\302\251lyr.data\"\n"
+"  --composer         ,  -w   (str)    Set the composer tag: \"moov.udta.meta.ilst.\302\251wrt.data\"\n"
 "  --copyright        ,  -x   (str)    Set the copyright tag: \"moov.udta.meta.ilst.cprt.data\"\n"
-"  --grouping         ,  -G   (str)    Set the grouping tag: \"moov.udta.meta.ilst.\302©grp.data\"\n"
+"  --grouping         ,  -G   (str)    Set the grouping tag: \"moov.udta.meta.ilst.\302\251grp.data\"\n"
 "  --artwork          ,  -A   (/path)  Set a piece of artwork (jpeg or png) on \"covr.data\"\n"
 "                                          Note: multiple pieces are allowed with more --artwork args\n"
 "  --bpm              ,  -B   (num)    Set the tempo/bpm tag: \"moov.udta.meta.ilst.tmpo.data\"\n"
 "  --albumArtist      ,  -A   (str)    Set the album artist tag: \"moov.udta.meta.ilst.aART.data\"\n"
 "  --compilation      ,  -C   (bool)   Sets the \"cpil\" atom (true or false to delete the atom)\n"
-"  --hdvideo          ,  -V   (bool)   Sets the \"hdvd\" atom (true or false to delete the atom)\n"
+"  --hdvideo          ,  -V   (num)    Sets the \"hdvd\" atom (0=SD 1=720p 2=1080p)\n"
 "  --advisory         ,  -y   (1of3)   Sets the iTunes lyrics advisory ('remove', 'clean', 'explicit') \n"
 "  --stik             ,  -S   (1of7)   Sets the iTunes \"stik\" atom (--stik \"remove\" to delete) \n"
 "                                           \"Movie\", \"Normal\", \"TV Show\" .... others: \n"
@@ -270,8 +270,8 @@ static const char* longHelp_text =
 "  --podcastGUID      ,  -J   (URL)    Set the episode's URL tag on the \"egid\" atom\n"
 "  --purchaseDate     ,  -D   (UTC)    Set Universal Coordinated Time of purchase on a \"purd\" atom\n"
 "                                       (use \"timestamp\" to set UTC to now; can be akin to id3v2 TDTG tag)\n"
-"  --encodingTool     ,       (str)    Set the name of the encoder on the \"\302©too\" atom\n"
-"  --encodedBy        ,       (str)    Set the name of the Person/company who encoded the file on the \"\302©enc\" atom\n"
+"  --encodingTool     ,       (str)    Set the name of the encoder on the \"\302\251too\" atom\n"
+"  --encodedBy        ,       (str)    Set the name of the Person/company who encoded the file on the \"\302\251enc\" atom\n"
 "  --apID             ,  -Y   (str)    Set the name of the Account Name on the \"apID\" atom\n"
 "  --cnID             ,       (num)    Set iTunes Catalog ID, used for combining SD and HD encodes in iTunes on the \"cnID\" atom\n"
 "                                       (To combine you must set \"hdvd\" atom on one file and must have same \"stik\" on both file)\n"
@@ -582,8 +582,8 @@ static const char* uuidHelp_text =
 " 'cprt' in the same namespace will always create that uuid; uuid atoms will only print out if the\n"
 " uuid generated is the same as discovered. Sony uuids don't for example show up with AP -t.\n"
 "\n"
-"  --information      ,  -i   (str)    Set an information tag on uuid atom name\"©inf\"\n"
-"  --url              ,  -u   (URL)    Set a URL tag on uuid atom name \"\302©url\"\n"
+"  --information      ,  -i   (str)    Set an information tag on uuid atom name\"\251inf\"\n"
+"  --url              ,  -u   (URL)    Set a URL tag on uuid atom name \"\302\251url\"\n"
 "  --tagtime          ,      timestamp Set the Coordinated Univeral Time of tagging on \"tdtg\"\n"
 "\n"
 "  Define & set an arbitrary atom with a text data or embed a file:\n"
@@ -932,7 +932,7 @@ int real_main(int argc, char *argv[])
             exit(0);
         } else if ( (strcmp(argv[1],"--longhelp") == 0) || (strcmp(argv[1],"-longhelp") == 0) || (strcmp(argv[1],"-Lh") == 0) ) {
 #if defined (_WIN32)
-            if (UnicodeOutputStatus == WIN32_UTF16) { //convert the helptext to utf16 to preserve © characters
+            if (UnicodeOutputStatus == WIN32_UTF16) { //convert the helptext to utf16 to preserve ï¿½ characters
                 int help_len = strlen(longHelp_text)+1;
                 wchar_t* Lhelp_text = (wchar_t *)malloc(sizeof(wchar_t)*help_len);
                 wmemset(Lhelp_text, 0, help_len);
@@ -1215,7 +1215,7 @@ int real_main(int argc, char *argv[])
                 APar_assert(false, 4, &*major_brand);
                 break;
             }
-            AtomicInfo* artistData_atom = APar_MetaData_atom_Init("moov.udta.meta.ilst.©ART.data", optarg, AtomFlags_Data_Text);
+            AtomicInfo* artistData_atom = APar_MetaData_atom_Init("moov.udta.meta.ilst.ï¿½ART.data", optarg, AtomFlags_Data_Text);
             APar_Unified_atom_Put(artistData_atom, optarg, UTF8_iTunesStyle_256glyphLimited, 0, 0);
             break;
         }
@@ -1226,7 +1226,7 @@ int real_main(int argc, char *argv[])
                 break;
             }
 
-            AtomicInfo* titleData_atom = APar_MetaData_atom_Init("moov.udta.meta.ilst.©nam.data", optarg, AtomFlags_Data_Text);
+            AtomicInfo* titleData_atom = APar_MetaData_atom_Init("moov.udta.meta.ilst.ï¿½nam.data", optarg, AtomFlags_Data_Text);
             APar_Unified_atom_Put(titleData_atom, optarg, UTF8_iTunesStyle_256glyphLimited, 0, 0);
             break;
         }
@@ -1237,7 +1237,7 @@ int real_main(int argc, char *argv[])
                 break;
             }
 
-            AtomicInfo* albumData_atom = APar_MetaData_atom_Init("moov.udta.meta.ilst.©alb.data", optarg, AtomFlags_Data_Text);
+            AtomicInfo* albumData_atom = APar_MetaData_atom_Init("moov.udta.meta.ilst.ï¿½alb.data", optarg, AtomFlags_Data_Text);
             APar_Unified_atom_Put(albumData_atom, optarg, UTF8_iTunesStyle_256glyphLimited, 0, 0);
             break;
         }
@@ -1314,7 +1314,7 @@ int real_main(int argc, char *argv[])
                 break;
             }
 
-            AtomicInfo* commentData_atom = APar_MetaData_atom_Init("moov.udta.meta.ilst.©cmt.data", optarg, AtomFlags_Data_Text);
+            AtomicInfo* commentData_atom = APar_MetaData_atom_Init("moov.udta.meta.ilst.ï¿½cmt.data", optarg, AtomFlags_Data_Text);
             APar_Unified_atom_Put(commentData_atom, optarg, UTF8_iTunesStyle_256glyphLimited, 0, 0);
             break;
         }
@@ -1325,7 +1325,7 @@ int real_main(int argc, char *argv[])
                 break;
             }
 
-            AtomicInfo* yearData_atom = APar_MetaData_atom_Init("moov.udta.meta.ilst.©day.data", optarg, AtomFlags_Data_Text);
+            AtomicInfo* yearData_atom = APar_MetaData_atom_Init("moov.udta.meta.ilst.ï¿½day.data", optarg, AtomFlags_Data_Text);
             APar_Unified_atom_Put(yearData_atom, optarg, UTF8_iTunesStyle_256glyphLimited, 0, 0);
             break;
         }
@@ -1336,7 +1336,7 @@ int real_main(int argc, char *argv[])
                 break;
             }
 
-            AtomicInfo* lyricsData_atom = APar_MetaData_atom_Init("moov.udta.meta.ilst.©lyr.data", optarg, AtomFlags_Data_Text);
+            AtomicInfo* lyricsData_atom = APar_MetaData_atom_Init("moov.udta.meta.ilst.ï¿½lyr.data", optarg, AtomFlags_Data_Text);
             APar_Unified_atom_Put(lyricsData_atom, optarg, UTF8_iTunesStyle_Unlimited, 0, 0);
             break;
         }
@@ -1347,7 +1347,7 @@ int real_main(int argc, char *argv[])
                 break;
             }
 
-            AtomicInfo* composerData_atom = APar_MetaData_atom_Init("moov.udta.meta.ilst.©wrt.data", optarg, AtomFlags_Data_Text);
+            AtomicInfo* composerData_atom = APar_MetaData_atom_Init("moov.udta.meta.ilst.ï¿½wrt.data", optarg, AtomFlags_Data_Text);
             APar_Unified_atom_Put(composerData_atom, optarg, UTF8_iTunesStyle_256glyphLimited, 0, 0);
             break;
         }
@@ -1369,7 +1369,7 @@ int real_main(int argc, char *argv[])
                 break;
             }
 
-            AtomicInfo* groupingData_atom = APar_MetaData_atom_Init("moov.udta.meta.ilst.©grp.data", optarg, AtomFlags_Data_Text);
+            AtomicInfo* groupingData_atom = APar_MetaData_atom_Init("moov.udta.meta.ilst.ï¿½grp.data", optarg, AtomFlags_Data_Text);
             APar_Unified_atom_Put(groupingData_atom, optarg, UTF8_iTunesStyle_256glyphLimited, 0, 0);
             break;
         }
@@ -1395,13 +1395,15 @@ int real_main(int argc, char *argv[])
             if ( !APar_assert(metadata_style == ITUNES_STYLE, 1, "hdvideo") ) {
                 break;
             }
-
-            if (strcmp(optarg, "false") == 0 || strlen(optarg) == 0) {
+            
+            if (strcmp(optarg, "0") == 0 || strlen(optarg) == 0) {
                 APar_RemoveAtom("moov.udta.meta.ilst.hdvd.data", VERSIONED_ATOM, 0);
             } else {
+                uint8_t hdvideo_value = 0;
+                sscanf(optarg, "%" SCNu8, &hdvideo_value );
                 //compilation: [0, 0, 0, 0,   boolean_value]; BUT that first uint32_t is already accounted for in APar_MetaData_atom_Init
                 AtomicInfo* hdvideoData_atom = APar_MetaData_atom_Init("moov.udta.meta.ilst.hdvd.data", optarg, AtomFlags_Data_UInt);
-                APar_Unified_atom_Put(hdvideoData_atom, NULL, UTF8_iTunesStyle_256glyphLimited, 1, 8); //a hard coded uint8_t of: 1 is compilation
+                APar_Unified_atom_Put(hdvideoData_atom, NULL, UTF8_iTunesStyle_256glyphLimited, hdvideo_value, 8);
             }
             break;
         }
@@ -1494,7 +1496,7 @@ int real_main(int argc, char *argv[])
                 break;
             }
 
-            AtomicInfo* encodingtoolData_atom = APar_MetaData_atom_Init("moov.udta.meta.ilst.©too.data", optarg, AtomFlags_Data_Text);
+            AtomicInfo* encodingtoolData_atom = APar_MetaData_atom_Init("moov.udta.meta.ilst.ï¿½too.data", optarg, AtomFlags_Data_Text);
             APar_Unified_atom_Put(encodingtoolData_atom, optarg, UTF8_iTunesStyle_256glyphLimited, 0, 0);
             break;
         }
@@ -1505,7 +1507,7 @@ int real_main(int argc, char *argv[])
                 break;
             }
 
-            AtomicInfo* encodedbyData_atom = APar_MetaData_atom_Init("moov.udta.meta.ilst.©enc.data", optarg, AtomFlags_Data_Text);
+            AtomicInfo* encodedbyData_atom = APar_MetaData_atom_Init("moov.udta.meta.ilst.ï¿½enc.data", optarg, AtomFlags_Data_Text);
             APar_Unified_atom_Put(encodedbyData_atom, optarg, UTF8_iTunesStyle_256glyphLimited, 0, 0);
             break;
         }
@@ -1809,14 +1811,14 @@ int real_main(int argc, char *argv[])
 
         case Meta_URL : {
             APar_ScanAtoms(ISObasemediafile);
-            AtomicInfo* urlUUID = APar_uuid_atom_Init("moov.udta.meta.uuid=%s", "©url", AtomFlags_Data_Text, optarg, false);
+            AtomicInfo* urlUUID = APar_uuid_atom_Init("moov.udta.meta.uuid=%s", "ï¿½url", AtomFlags_Data_Text, optarg, false);
             APar_Unified_atom_Put(urlUUID, optarg, UTF8_iTunesStyle_Unlimited, 0, 0);
             break;
         }
 
         case Meta_Information : {
             APar_ScanAtoms(ISObasemediafile);
-            AtomicInfo* infoUUID = APar_uuid_atom_Init("moov.udta.meta.uuid=%s", "©inf", AtomFlags_Data_Text, optarg, false);
+            AtomicInfo* infoUUID = APar_uuid_atom_Init("moov.udta.meta.uuid=%s", "ï¿½inf", AtomFlags_Data_Text, optarg, false);
             APar_Unified_atom_Put(infoUUID, optarg, UTF8_iTunesStyle_Unlimited, 0, 0);
             break;
         }
@@ -1842,7 +1844,7 @@ int real_main(int argc, char *argv[])
             // they match, it will print out or extract to a file; if not, only
             // its name will be displayed in the tree.
             //
-            // --meta-uuid "©foo" 1 'http://www.url.org'  --meta-uuid "pdf1"
+            // --meta-uuid "ï¿½foo" 1 'http://www.url.org'  --meta-uuid "pdf1"
             // file /some/path/pic.pdf description="My Booty, Your Booty,
             // Djbouti"
 
@@ -2481,7 +2483,7 @@ int real_main(int argc, char *argv[])
                     }
                 }
 
-                formed_keyword_struct = (char*)calloc(1, sizeof(char)* set_UTF16_text ? (keyword_strlen * 4) : (keyword_strlen * 2)); // *4 should carry utf16's BOM & TERM
+                formed_keyword_struct = (char*)calloc(1, (sizeof(char)* set_UTF16_text) ? (keyword_strlen * 4) : (keyword_strlen * 2)); // *4 should carry utf16's BOM & TERM
                 uint32_t keyword_struct_bytes = APar_3GP_Keyword_atom_Format(keywords_globbed, keyword_count, set_UTF16_text, formed_keyword_struct);
 
                 for (uint8_t i_asset = 1; i_asset <= asset_iterations; i_asset++) {
