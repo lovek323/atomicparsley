@@ -1215,7 +1215,7 @@ int real_main(int argc, char *argv[])
                 APar_assert(false, 4, &*major_brand);
                 break;
             }
-            AtomicInfo* artistData_atom = APar_MetaData_atom_Init("moov.udta.meta.ilst.�ART.data", optarg, AtomFlags_Data_Text);
+            AtomicInfo* artistData_atom = APar_MetaData_atom_Init("moov.udta.meta.ilst.\251ART.data", optarg, AtomFlags_Data_Text);
             APar_Unified_atom_Put(artistData_atom, optarg, UTF8_iTunesStyle_256glyphLimited, 0, 0);
             break;
         }
@@ -1226,7 +1226,7 @@ int real_main(int argc, char *argv[])
                 break;
             }
 
-            AtomicInfo* titleData_atom = APar_MetaData_atom_Init("moov.udta.meta.ilst.�nam.data", optarg, AtomFlags_Data_Text);
+            AtomicInfo* titleData_atom = APar_MetaData_atom_Init("moov.udta.meta.ilst.\251nam.data", optarg, AtomFlags_Data_Text);
             APar_Unified_atom_Put(titleData_atom, optarg, UTF8_iTunesStyle_256glyphLimited, 0, 0);
             break;
         }
@@ -1237,7 +1237,7 @@ int real_main(int argc, char *argv[])
                 break;
             }
 
-            AtomicInfo* albumData_atom = APar_MetaData_atom_Init("moov.udta.meta.ilst.�alb.data", optarg, AtomFlags_Data_Text);
+            AtomicInfo* albumData_atom = APar_MetaData_atom_Init("moov.udta.meta.ilst.\251alb.data", optarg, AtomFlags_Data_Text);
             APar_Unified_atom_Put(albumData_atom, optarg, UTF8_iTunesStyle_256glyphLimited, 0, 0);
             break;
         }
@@ -1314,7 +1314,7 @@ int real_main(int argc, char *argv[])
                 break;
             }
 
-            AtomicInfo* commentData_atom = APar_MetaData_atom_Init("moov.udta.meta.ilst.�cmt.data", optarg, AtomFlags_Data_Text);
+            AtomicInfo* commentData_atom = APar_MetaData_atom_Init("moov.udta.meta.ilst.\251cmt.data", optarg, AtomFlags_Data_Text);
             APar_Unified_atom_Put(commentData_atom, optarg, UTF8_iTunesStyle_256glyphLimited, 0, 0);
             break;
         }
@@ -1325,7 +1325,7 @@ int real_main(int argc, char *argv[])
                 break;
             }
 
-            AtomicInfo* yearData_atom = APar_MetaData_atom_Init("moov.udta.meta.ilst.�day.data", optarg, AtomFlags_Data_Text);
+            AtomicInfo* yearData_atom = APar_MetaData_atom_Init("moov.udta.meta.ilst.\251day.data", optarg, AtomFlags_Data_Text);
             APar_Unified_atom_Put(yearData_atom, optarg, UTF8_iTunesStyle_256glyphLimited, 0, 0);
             break;
         }
@@ -1336,7 +1336,7 @@ int real_main(int argc, char *argv[])
                 break;
             }
 
-            AtomicInfo* lyricsData_atom = APar_MetaData_atom_Init("moov.udta.meta.ilst.�lyr.data", optarg, AtomFlags_Data_Text);
+            AtomicInfo* lyricsData_atom = APar_MetaData_atom_Init("moov.udta.meta.ilst.\251lyr.data", optarg, AtomFlags_Data_Text);
             APar_Unified_atom_Put(lyricsData_atom, optarg, UTF8_iTunesStyle_Unlimited, 0, 0);
             break;
         }
@@ -1347,7 +1347,7 @@ int real_main(int argc, char *argv[])
                 break;
             }
 
-            AtomicInfo* composerData_atom = APar_MetaData_atom_Init("moov.udta.meta.ilst.�wrt.data", optarg, AtomFlags_Data_Text);
+            AtomicInfo* composerData_atom = APar_MetaData_atom_Init("moov.udta.meta.ilst.\251wrt.data", optarg, AtomFlags_Data_Text);
             APar_Unified_atom_Put(composerData_atom, optarg, UTF8_iTunesStyle_256glyphLimited, 0, 0);
             break;
         }
@@ -1369,7 +1369,7 @@ int real_main(int argc, char *argv[])
                 break;
             }
 
-            AtomicInfo* groupingData_atom = APar_MetaData_atom_Init("moov.udta.meta.ilst.�grp.data", optarg, AtomFlags_Data_Text);
+            AtomicInfo* groupingData_atom = APar_MetaData_atom_Init("moov.udta.meta.ilst.\251grp.data", optarg, AtomFlags_Data_Text);
             APar_Unified_atom_Put(groupingData_atom, optarg, UTF8_iTunesStyle_256glyphLimited, 0, 0);
             break;
         }
@@ -1496,7 +1496,7 @@ int real_main(int argc, char *argv[])
                 break;
             }
 
-            AtomicInfo* encodingtoolData_atom = APar_MetaData_atom_Init("moov.udta.meta.ilst.�too.data", optarg, AtomFlags_Data_Text);
+            AtomicInfo* encodingtoolData_atom = APar_MetaData_atom_Init("moov.udta.meta.ilst.\251too.data", optarg, AtomFlags_Data_Text);
             APar_Unified_atom_Put(encodingtoolData_atom, optarg, UTF8_iTunesStyle_256glyphLimited, 0, 0);
             break;
         }
@@ -1507,7 +1507,7 @@ int real_main(int argc, char *argv[])
                 break;
             }
 
-            AtomicInfo* encodedbyData_atom = APar_MetaData_atom_Init("moov.udta.meta.ilst.�enc.data", optarg, AtomFlags_Data_Text);
+            AtomicInfo* encodedbyData_atom = APar_MetaData_atom_Init("moov.udta.meta.ilst.\251enc.data", optarg, AtomFlags_Data_Text);
             APar_Unified_atom_Put(encodedbyData_atom, optarg, UTF8_iTunesStyle_256glyphLimited, 0, 0);
             break;
         }
@@ -1811,14 +1811,14 @@ int real_main(int argc, char *argv[])
 
         case Meta_URL : {
             APar_ScanAtoms(ISObasemediafile);
-            AtomicInfo* urlUUID = APar_uuid_atom_Init("moov.udta.meta.uuid=%s", "�url", AtomFlags_Data_Text, optarg, false);
+            AtomicInfo* urlUUID = APar_uuid_atom_Init("moov.udta.meta.uuid=%s", "\251url", AtomFlags_Data_Text, optarg, false);
             APar_Unified_atom_Put(urlUUID, optarg, UTF8_iTunesStyle_Unlimited, 0, 0);
             break;
         }
 
         case Meta_Information : {
             APar_ScanAtoms(ISObasemediafile);
-            AtomicInfo* infoUUID = APar_uuid_atom_Init("moov.udta.meta.uuid=%s", "�inf", AtomFlags_Data_Text, optarg, false);
+            AtomicInfo* infoUUID = APar_uuid_atom_Init("moov.udta.meta.uuid=%s", "\251inf", AtomFlags_Data_Text, optarg, false);
             APar_Unified_atom_Put(infoUUID, optarg, UTF8_iTunesStyle_Unlimited, 0, 0);
             break;
         }
