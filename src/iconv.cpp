@@ -1,6 +1,6 @@
 //==================================================================//
 /*
-    AtomicParsley - AP_iconv.cpp
+    AtomicParsley - iconv.cpp
 
     AtomicParsley is GPL software; you can freely distribute, 
     redistribute, modify & use under the terms of the GNU General
@@ -15,7 +15,7 @@
     cannot, write to the Free Software Foundation, 59 Temple Place
     Suite 330, Boston, MA 02111-1307, USA.  Or www.fsf.org
 
-    Copyright ©2005-2007 puck_lock
+    Copyright ï¿½2005-2007 puck_lock
     with contributions from others; see the CREDITS file
 */
 //==================================================================//
@@ -816,7 +816,7 @@ unsigned int utf8_length(const char *in_string, unsigned int char_limit) {
 	return utf8_string_length;
 }
 
-#if defined (_WIN32)
+#if defined (_WIN32) && !defined (__CYGWIN__)
 unsigned char APar_Return_rawutf8_CP(unsigned short cp_bound_glyph) {
 	unsigned short total_known_points = 0;
 	unsigned int win32cp = GetConsoleCP();

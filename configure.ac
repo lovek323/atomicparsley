@@ -5,7 +5,7 @@ dnl Some intro checks and defines
 
 AC_PREREQ(2.50)
 
-AC_INIT([atomicparsley],[0.9.4],
+AC_INIT([atomicparsley],[0.9.6],
   [http://bitbucket.org/wez/atomicparsley/issues/new/])
   
 dnl Need to disable dependency tracking option so that the universal
@@ -15,13 +15,14 @@ AM_INIT_AUTOMAKE([dist-bzip2 foreign no-dependencies subdir-objects -Wall])
 AC_CANONICAL_HOST
 
 AC_ARG_ENABLE(universal, dnl
-[  --disable-universal     build a universal binary on Mac OS X [default=yes]],
-              universal=$enableval, universal=yes)
+[  --enable-universal     build a universal binary on Mac OS X [default=no]],
+              universal=$enableval, universal=no)
 
 case $host in
   *darwin*)
 
     AP_NATIVE_ARCH=`arch`
+    AP_64_ARCH="x86_64"
     case $AP_NATIVE_ARCH in
       ppc*)
         AP_CROSS_ARCH="i386"
@@ -32,14 +33,15 @@ case $host in
     esac
     AC_SUBST(AP_CROSS_ARCH)
     AC_SUBST(AP_NATIVE_ARCH)
+    AC_SUBST(AP_64_ARCH)
 
     HAVE_DARWIN_PLATFORM="true"
     AC_SUBST(HAVE_DARWIN_PLATFORM)
 
     AC_MSG_CHECKING([if we are os/x universal])
     if test "$universal" = "yes" ; then
-      AC_MSG_RESULT([building for $AP_NATIVE_ARCH and $AP_CROSS_ARCH])
-      UNIVERSAL_FLAGS="-arch $AP_NATIVE_ARCH -arch $AP_CROSS_ARCH"
+      AC_MSG_RESULT([building for $AP_NATIVE_ARCH, $AP_CROSS_ARCH, and $AP_64_ARCH])
+      UNIVERSAL_FLAGS="-arch $AP_NATIVE_ARCH -arch $AP_CROSS_ARCH -arch $AP_64_ARCH"
       AC_SUBST(UNIVERSAL_FLAGS)
     fi
     AC_MSG_RESULT([no])
@@ -62,6 +64,14 @@ if test "$GCC" = "yes" ; then
   CXXFLAGS="$CXXFLAGS -Wall"
 fi
 AC_PROG_OBJC
+# Thanks automake; we MUST invoke AC_PROG_OBJCXX even though
+# we roll our own objc++ build support, because automake 1.12.1
+# throws a fatal error when it finds our .mm sources.
+# We do this because there is no good reason to bump the minimum
+# autoconf and automake dependencies.
+m4_ifdef([AC_PROG_OBJCXX], [
+AC_PROG_OBJCXX
+])
 AC_C_BIGENDIAN
 
 AC_HEADER_DIRENT

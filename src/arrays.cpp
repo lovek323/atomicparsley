@@ -1,6 +1,6 @@
 //==================================================================//
 /*
-    AtomicParsley - AP_arrays.cpp
+    AtomicParsley - arrays.cpp
 
     AtomicParsley is GPL software; you can freely distribute, 
     redistribute, modify & use under the terms of the GNU General
@@ -15,7 +15,7 @@
     cannot, write to the Free Software Foundation, 59 Temple Place
     Suite 330, Boston, MA 02111-1307, USA.  Or www.fsf.org
 
-    Copyright ©2005-2007 puck_lock
+    Copyright ÔøΩ2005-2007 puck_lock
     with contributions from others; see the CREDITS file
 		
 		----------------------
@@ -65,14 +65,61 @@ static const char* ID3v1GenreList[] = {
 }; */  //apparently the other winamp id3v1 extensions aren't valid
 
 stiks stikArray[] = {
-	{ "Movie", 0 },
+	{ "Home Video", 0 },
 	{ "Normal", 1 },
 	{ "Audiobook", 2 },
 	{ "Whacked Bookmark", 5 },
 	{ "Music Video", 6 },
+	{ "Movie", 9 },
 	{ "Short Film", 9 },
 	{ "TV Show", 10 },
 	{ "Booklet", 11 }
+};
+
+geIDMovie genreidmovie[] = {
+	{ "Action & Adventure", 4401 },
+	{ "Anime", 4402 },
+	{ "Classics", 4403 },
+	{ "Comedy", 4404 },
+	{ "Documentary", 4405 },
+	{ "Drama", 4406 },
+	{ "Foreign", 4407 },
+	{ "Horror", 4408 },
+	{ "Independent", 4409 },
+	{ "Kids & Family", 4410 },
+	{ "Musicals", 4411 },
+	{ "Romance", 4412 },
+	{ "Sci-Fi & Fantasy", 4413 },
+	{ "Short Films", 4414 },
+	{ "Special Interest", 4415 },
+	{ "Thriller", 4416 },
+	{ "Sports", 4417 },
+	{ "Western", 4418 },
+	{ "Urban", 4419 },
+	{ "Holiday", 4420 },
+	{ "Made for TV", 4421 },
+	{ "Concert Films", 4422 },
+	{ "Music Documentaries", 4423 },
+	{ "Music Feature Films", 4424 },
+	{ "Japanese Cinema", 4425 },
+	{ "Jidaigeki", 4426 },
+	{ "Tokusatsu", 4427 },
+	{ "Korean Cinema", 4428 }
+};
+
+geIDTV genreidtv[] = {
+	{ "Comedy", 4000 },
+	{ "Drama", 4001 },
+	{ "Animation", 4002 },
+	{ "Action & Adventure", 4003 },
+	{ "Classic", 4004 },
+	{ "Kids", 4005 },
+	{ "Nonfiction", 4005 },
+	{ "Reality TV", 4007 },
+	{ "Sci-Fi & Fantasy", 4008 },
+	{ "Sports", 4009 },
+	{ "Teens", 4010 },
+	{ "Latino TV", 4011 }
 };
 
 // from William Herrera: http://search.cpan.org/src/BILLH/LWP-UserAgent-iTMS_Client-0.16/lib/LWP/UserAgent/iTMS_Client.pm
@@ -268,7 +315,7 @@ iso639_lang known_languages[] = {
 	{ "grn",			"gn",			"Guarani" },
 	{ "gsw",			NULL,			"Alemanic; Swiss German" },
 	{ "guj",			"gu",			"Gujarati" },
-	{ "gwi",			NULL,			"Gwich´in" },
+	{ "gwi",			NULL,			"GwichÔøΩin" },
 	{ "hai",			NULL,			"Haida" },
 	{ "hat",			"ht",			"Haitian; Haitian Creole" },
 	{ "hau",			"ha",			"Hausa" },
@@ -414,7 +461,7 @@ iso639_lang known_languages[] = {
 	{ "nic",			NULL,			"Niger-Kordofanian (Other)" },
 	{ "niu",			NULL,			"Niuean" },
 	{ "nno",			"nn",			"Norwegian Nynorsk; Nynorsk, Norwegian" },
-	{ "nob",			"nb",			"Norwegian Bokmål; Bokmål, Norwegian" },
+	{ "nob",			"nb",			"Norwegian BokmÔøΩl; BokmÔøΩl, Norwegian" },
 	{ "nog",			NULL,			"Nogai" },
 	{ "non",			NULL,			"Norse, Old" },
 	{ "nor",			"no",			"Norwegian" },
@@ -427,7 +474,7 @@ iso639_lang known_languages[] = {
 	{ "nyn",			NULL,			"Nyankole" },
 	{ "nyo",			NULL,			"Nyoro" },
 	{ "nzi",			NULL,			"Nzima" },
-	{ "oci",			"oc",			"Occitan (post 1500); Provençal" },
+	{ "oci",			"oc",			"Occitan (post 1500); ProvenÔøΩal" },
 	{ "oji",			"oj",			"Ojibwa" },
 	{ "ori",			"or",			"Oriya" },
 	{ "orm",			"om",			"Oromo" },
@@ -451,7 +498,7 @@ iso639_lang known_languages[] = {
 	{ "pon",			NULL,			"Pohnpeian" },
 	{ "por",			"pt",			"Portuguese" },
 	{ "pra",			NULL,			"Prakrit languages" },
-	{ "pro",			NULL,			"Provençal, Old (to 1500)" },
+	{ "pro",			NULL,			"ProvenÔøΩal, Old (to 1500)" },
 	{ "pus",			"ps",			"Pushto" },
 	//{ "qaa-qtz",	NULL,			"Reserved for local use" },
 	{ "que",			"qu",			"Quechua" },
@@ -561,7 +608,7 @@ iso639_lang known_languages[] = {
 	{ "vai",			NULL,			"Vai" },
 	{ "ven",			"ve",			"Venda" },
 	{ "vie",			"vi",			"Vietnamese" },
-	{ "vol",			"vo",			"Volapük" },
+	{ "vol",			"vo",			"VolapÔøΩk" },
 	{ "vot",			NULL,			"Votic" },
 	{ "wak",			NULL,			"Wakashan languages" },
 	{ "wal",			NULL,			"Walamo" },
@@ -593,8 +640,8 @@ m_ratings known_ratings[] = {
 	{ "us-tv|TV-14|500|",  "TV-14" },
 	{ "us-tv|TV-PG|400|",  "TV-PG" },
 	{ "us-tv|TV-G|300|",   "TV-G" },
-	{ "us-tv|TV-Y|200|",   "TV-Y" },
-	{ "us-tv|TV-Y7|100|",  "TV-Y7" },
+	{ "us-tv|TV-Y7|200|",  "TV-Y7" },
+	{ "us-tv|TV-Y|100|",   "TV-Y" },
 	//{ "us-tv||0|",         "not-applicable" }, //though its a valid flag & some files have this, AP won't be setting it.
 	{ "mpaa|UNRATED|600|",  "Unrated" },
 	{ "mpaa|NC-17|500|",    "NC-17" },
@@ -725,6 +772,26 @@ void ListMediaRatings() {
 
 	for (uint16_t i = 0; i < total_known_ratings; i++) {
 		fprintf(stdout, " %s\n", known_ratings[i].media_rating_cli_str);
+	}
+	return;
+}
+
+void ListTVGenreIDValues() {
+	uint16_t total_genreidtv = (uint16_t)(sizeof(genreidtv)/sizeof(*genreidtv));
+	fprintf(stdout, "\tAvailable iTunes TV Genre IDs:\n");
+
+	for (uint16_t i = 0; i < total_genreidtv; i++) {
+		fprintf(stdout, "(%u) %s\n", genreidtv[i].genre_id_tv_value, genreidtv[i].genre_id_tv_string);
+	}
+	return;
+}
+
+void ListMovieGenreIDValues() {
+	uint16_t total_genreidmovie = (uint16_t)(sizeof(genreidmovie)/sizeof(*genreidmovie));
+	fprintf(stdout, "\tAvailable iTunes Movie Genre IDs:\n");
+
+	for (uint16_t i = 0; i < total_genreidmovie; i++) {
+		fprintf(stdout, "(%u) %s\n", genreidmovie[i].genre_id_movie_value, genreidmovie[i].genre_id_movie_string);
 	}
 	return;
 }

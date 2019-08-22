@@ -18,10 +18,14 @@
     cannot, write to the Free Software Foundation, 59 Temple Place
     Suite 330, Boston, MA 02111-1307, USA.  Or www.fsf.org
 
-    Copyright ©2005-2007 puck_lock
+    Copyright ï¿½2005-2007 puck_lock
     with contributions from others; see the CREDITS file
                                                                    */
 //==================================================================//
+
+#if defined HAVE_WINDOWS_H && !defined _WIN32
+#define _WIN32
+#endif
 
 #ifdef _WIN32
 #ifndef _UNICODE
@@ -104,19 +108,30 @@
 #endif
 
 #ifndef PRIu64
-# define PRIu64 "llu"
+# ifdef _WIN32
+#  define PRIu64 "I64u"
+# else
+#  define PRIu64 "llu"
+# endif
 #endif
-#ifndef PRIu16
-# define PRIu16 "hu"
+#ifndef PRIu32
+# define PRIu32 "u"
 #endif
-#ifndef PRIu8
-# define PRIu8 "hhu"
+#ifndef PRIx32
+# define PRIx32 "x"
+#endif
+#ifndef SCNu64
+# ifdef _WIN32
+#  define SCNu64 "I64u"
+# else
+#  define SCNu64 "llu"
+# endif
 #endif
 #ifndef SCNu32
-# define SCNu32 "lu"
+# define SCNu32 "u"
 #endif
 #ifndef SCNu16
-# define SCNu16 "u"
+# define SCNu16 "hu"
 #endif
 
 #ifndef MIN
@@ -210,6 +225,7 @@ void APar_MetaData_atomArtwork_Set(const char* artworkPath,
   char* env_PicOptions);
 
 void APar_MetaData_atomGenre_Set(const char* atomPayload);
+void APar_MetaData_atomLyrics_Set(const char* lyricsPath);
 void APar_MetaData_atom_QuickInit(short atom_num, const uint32_t atomFlags,
   uint32_t supplemental_length, uint32_t allotment = MAXDATA_PAYLOAD + 1);
 
@@ -399,6 +415,8 @@ bool MatchLanguageCode(const char* in_code);
 void ListLanguageCodes();
 
 void ListMediaRatings();
+void ListTVGenreIDValues();
+void ListMovieGenreIDValues();
 const char* Expand_cli_mediastring(const char* cli_rating);
 
 char* ID3GenreIntToString(int genre);

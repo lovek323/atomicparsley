@@ -1,6 +1,6 @@
 //==================================================================//
 /*
-    AtomicParsley - AP_NSImage.mm
+    AtomicParsley - nsimage.mm
 
     AtomicParsley is GPL software; you can freely distribute, 
     redistribute, modify & use under the terms of the GNU General
@@ -15,7 +15,7 @@
     cannot, write to the Free Software Foundation, 59 Temple Place
     Suite 330, Boston, MA 02111-1307, USA.  Or www.fsf.org
 
-    Copyright ©2005-2007 puck_lock
+    Copyright ï¿½2005-2007 puck_lock
     with contributions from others; see the CREDITS file
                                                                    */
 //==================================================================//
@@ -165,7 +165,7 @@ bool ResizeGivenImage(const char* filePath, PicPrefs myPicPrefs, char* resized_p
 		}
 	}
 	
-	off_t pic_file_size = findFileSize(filePath);
+	uint64_t pic_file_size = findFileSize(filePath);
 	if ( ( (int)pic_file_size > myPicPrefs.max_Kbytes) && ( myPicPrefs.max_Kbytes != 0) ) {
 		resize = true;
 	}

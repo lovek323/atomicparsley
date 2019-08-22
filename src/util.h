@@ -1,6 +1,6 @@
 //==================================================================//
 /*
-    AtomicParsley - AP_commons.h
+    AtomicParsley - util.h
 
     AtomicParsley is GPL software; you can freely distribute,
     redistribute, modify & use under the terms of the GNU General
@@ -15,7 +15,7 @@
     cannot, write to the Free Software Foundation, 59 Temple Place
     Suite 330, Boston, MA 02111-1307, USA.  Or www.fsf.org
 
-    Copyright ©2006-2007 puck_lock
+    Copyright ï¿½2006-2007 puck_lock
     with contributions from others; see the CREDITS file
 																																		*/
 //==================================================================//
@@ -40,17 +40,20 @@
 
 #define MAXTIME_32 6377812095ULL
 
-off_t findFileSize(const char *utf8_filepath);
+uint64_t findFileSize(const char *utf8_filepath);
 FILE* APar_OpenFile(const char* utf8_filepath, const char* file_flags);
 FILE* APar_OpenISOBaseMediaFile(const char* file, bool open); //openSomeFile
 void TestFileExistence(const char *filePath, bool errorOut);
 
 #if defined (_WIN32)
+#ifndef HAVE_FSEEKO
 int fseeko(FILE *stream, uint64_t pos, int whence);
+#endif
 HANDLE APar_OpenFileWin32(const char* utf8_filepath, DWORD dwDesiredAccess, DWORD dwShareMode, LPSECURITY_ATTRIBUTES lpSecurityAttributes, DWORD dwCreationDisposition, DWORD dwFlagsAndAttributes, HANDLE hTemplateFile);
 #endif
 bool IsUnicodeWinOS();
 
+const char *APar_strferror(FILE *f);
 uint8_t APar_read8(FILE* ISObasemediafile, uint64_t pos);
 uint16_t APar_read16(char* buffer, FILE* ISObasemediafile, uint64_t pos);
 uint32_t APar_read32(char* buffer, FILE* ISObasemediafile, uint64_t pos);
