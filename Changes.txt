@@ -533,6 +533,9 @@ left "Short Film" to also set stik 9, for backward compatibility with work-aroun
 
 Swapped TV-Y and TV-Y7 to conform with iTunes usage.
 
+v1.0.2-github  08/22/2019
 
+Unicode fixes https://github.com/DanDrusch/atomicparsley/commit/d4b7927c4d53558c3a1ac3d2191f703599af0435
+HD Tagging - support for 1080p tag  https://github.com/DanDrusch/atomicparsley/commit/dbd235ea23da5d2b2833040db97f349fc8ca7ec1
 
 # vim:ts=2:sw=2:et:
