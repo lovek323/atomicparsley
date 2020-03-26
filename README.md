@@ -5,9 +5,15 @@
 If you are building from source you will need autoconf & automake (you will
 definitely need make):
 
-      % ./autogen.sh
-      % ./configure
-      % make
+For macOS:
+
+    % brew install autoconf automake
+
+For everyone:
+
+    % ./autogen.sh
+    % ./configure
+    % make
 
 Use the program in situ or place it somewhere in your $PATH by using:
 

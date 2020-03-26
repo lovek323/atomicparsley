@@ -1110,7 +1110,7 @@ void APar_ExtractTrackDetails(char* uint32_buffer, FILE* isofile, Trackage* trac
 		track_info->protected_codec = APar_read32(uint32_buffer, isofile, parsedAtoms[track->track_atom].AtomicStart + 8);
 	}
 
-	//Encoder string; occasionally, it appears under stsd for a video track; it is typcally preceded by ' �' (1st char is unprintable) or 0x01B2
+	//Encoder string; occasionally, it appears under stsd for a video track; it is typcally preceded by ' \251' (1st char is unprintable) or 0x01B2
 	if (track_info->contains_esds) {
 		APar_TrackLevelInfo(track, "esds");
 

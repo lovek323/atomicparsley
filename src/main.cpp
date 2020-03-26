@@ -133,6 +133,12 @@
 
 #define Meta_ID3v2Tag            0xBC
 
+#define Meta_movementCount 0xE0
+#define Meta_movementName 0xE1
+#define Meta_movementNumber 0xE2
+#define Meta_showWorkMovement 0xE3
+#define Meta_work 0xE4
+
 char *output_file;
 
 int total_args;
@@ -164,48 +170,48 @@ static const char* shortHelp_text =
 "  -E  --extractPix  Extracts pix to the same folder as the mpeg-4 file\n"
 "\n"
 "Setting iTunes-style metadata tags\n"
-"  --artist       (string)     Set the artist tag\n"
-"  --title        (string)     Set the title tag\n"
-"  --album        (string)     Set the album tag\n"
-"  --genre        (string)     Genre tag (see --longhelp for more info)\n"
-"  --tracknum     (num)[/tot]  Track number (or track number/total tracks)\n"
-"  --disk         (num)[/tot]  Disk number (or disk number/total disks)\n"
-"  --comment      (string)     Set the comment tag\n"
-"  --year         (num|UTC)    Year tag (see --longhelp for \"Release Date\")\n"
-"  --lyrics       (string)     Set lyrics (not subject to 256 byte limit)\n"
-"  --lyricsFile   (/path)      Set lyrics to the content of a file\n"
-"  --composer     (string)     Set the composer tag\n"
-"  --copyright    (string)     Set the copyright tag\n"
-"  --grouping     (string)     Set the grouping tag\n"
-"  --artwork      (/path)      Set a piece of artwork (jpeg or png only)\n"
-"  --bpm          (number)     Set the tempo/bpm\n"
-"  --albumArtist  (string)     Set the album artist tag\n"
-"  --compilation  (boolean)    Set the compilation flag (true or false)\n"
-"  --hdvideo      (number)     Set the hdvideo flag (0=SD 1=720p 2=1080p)\n"
-"  --advisory     (string*)    Content advisory (*values: 'clean', 'explicit')\n"
-"  --stik         (string*)    Sets the iTunes \"stik\" atom (see --longhelp)\n"
-"  --description  (string)     Set the description tag\n"
-"  --longdesc     (string)     Set the long description tag\n"
-"  --storedesc    (string)     Set the store description tag\n"
-"  --TVNetwork    (string)     Set the TV Network name\n"
-"  --TVShowName   (string)     Set the TV Show name\n"
-"  --TVEpisode    (string)     Set the TV episode/production code\n"
-"  --TVSeasonNum  (number)     Set the TV Season number\n"
-"  --TVEpisodeNum (number)     Set the TV Episode number\n"
-"  --podcastFlag  (boolean)    Set the podcast flag (true or false)\n"
-"  --category     (string)     Sets the podcast category\n"
-"  --keyword      (string)     Sets the podcast keyword\n"
-"  --podcastURL   (URL)        Set the podcast feed URL\n"
-"  --podcastGUID  (URL)        Set the episode's URL tag\n"
-"  --purchaseDate (UTC)        Set time of purchase\n"
-"  --encodingTool (string)     Set the name of the encoder\n"
-"  --encodedBy    (string)     Set the name of the Person/company who encoded the file\n"
-"  --apID         (string)     Set the Account Name\n"
-"  --cnID         (number)     Set the iTunes Catalog ID (see --longhelp)\n"
-"  --geID         (number)     Set the iTunes Genre ID (see --longhelp)\n"
-"  --xID          (string)     Set the vendor-supplied iTunes xID (see --longhelp)\n"
-"  --gapless      (boolean)    Set the gapless playback flag\n"
-"  --contentRating (string*)   Set tv/mpaa rating (see -rDNS-help)\n"
+"  --artist        (string)     Set the artist tag\n"
+"  --title         (string)     Set the title tag\n"
+"  --album         (string)     Set the album tag\n"
+"  --genre         (string)     Genre tag (see --longhelp for more info)\n"
+"  --tracknum      (num)[/tot]  Track number (or track number/total tracks)\n"
+"  --disk          (num)[/tot]  Disk number (or disk number/total disks)\n"
+"  --comment       (string)     Set the comment tag\n"
+"  --year          (num|UTC)    Year tag (see --longhelp for \"Release Date\")\n"
+"  --lyrics        (string)     Set lyrics (not subject to 256 byte limit)\n"
+"  --lyricsFile    (/path)      Set lyrics to the content of a file\n"
+"  --composer      (string)     Set the composer tag\n"
+"  --copyright     (string)     Set the copyright tag\n"
+"  --grouping      (string)     Set the grouping tag\n"
+"  --artwork       (/path)      Set a piece of artwork (jpeg or png only)\n"
+"  --bpm           (number)     Set the tempo/bpm\n"
+"  --albumArtist   (string)     Set the album artist tag\n"
+"  --compilation   (boolean)    Set the compilation flag (true or false)\n"
+"  --hdvideo       (number)     Set the hdvideo flag (0=SD 1=720p 2=1080p)\n"
+"  --advisory      (string*)    Content advisory (*values: 'clean', 'explicit')\n"
+"  --stik          (string*)    Sets the iTunes \"stik\" atom (see --longhelp)\n"
+"  --description   (string)     Set the description tag\n"
+"  --longdesc      (string)     Set the long description tag\n"
+"  --storedesc     (string)     Set the store description tag\n"
+"  --TVNetwork     (string)     Set the TV Network name\n"
+"  --TVShowName    (string)     Set the TV Show name\n"
+"  --TVEpisode     (string)     Set the TV episode/production code\n"
+"  --TVSeasonNum   (number)     Set the TV Season number\n"
+"  --TVEpisodeNum  (number)     Set the TV Episode number\n"
+"  --podcastFlag   (boolean)    Set the podcast flag (true or false)\n"
+"  --category      (string)     Sets the podcast category\n"
+"  --keyword       (string)     Sets the podcast keyword\n"
+"  --podcastURL    (URL)        Set the podcast feed URL\n"
+"  --podcastGUID   (URL)        Set the episode's URL tag\n"
+"  --purchaseDate  (UTC)        Set time of purchase\n"
+"  --encodingTool  (string)     Set the name of the encoder\n"
+"  --encodedBy     (string)     Set the name of the Person/company who encoded the file\n"
+"  --apID          (string)     Set the Account Name\n"
+"  --cnID          (number)     Set the iTunes Catalog ID (see --longhelp)\n"
+"  --geID          (number)     Set the iTunes Genre ID (see --longhelp)\n"
+"  --xID           (string)     Set the vendor-supplied iTunes xID (see --longhelp)\n"
+"  --gapless       (boolean)    Set the gapless playback flag\n"
+"  --contentRating (string*)    Set tv/mpaa rating (see -rDNS-help)\n"
 "\n"
 "Deleting tags\n"
 "  Set the value to \"\":        --artist \"\" --stik \"\" --bpm \"\"\n"
@@ -1161,6 +1167,12 @@ int real_main(int argc, char *argv[])
         { "ID3Tag",           required_argument,  NULL,           Meta_ID3v2Tag },
 
         { "DeepScan",         0,                  &extr,          1 },
+
+        { "movementCount",   required_argument,  NULL,           Meta_movementCount },
+        { "movementName",    required_argument,  NULL,           Meta_movementName },
+        { "movementNumber",  required_argument,  NULL,           Meta_movementNumber },
+        { "showWorkMovement",required_argument,  NULL,           Meta_showWorkMovement },
+        { "work",            required_argument,  NULL,           Meta_work },
 
         { 0, 0, 0, 0 }
     };
@@ -3076,6 +3088,59 @@ int real_main(int argc, char *argv[])
             break;
         }
 
+        case Meta_movementCount: {
+            APar_ScanAtoms(ISObasemediafile);
+            if ( !APar_assert(metadata_style == ITUNES_STYLE, 1, "movementCount") ) {
+                break;
+            }
+            uint8_t data_value = 0;
+            sscanf(optarg, "%" SCNu8, &data_value );
+            AtomicInfo* atom = APar_MetaData_atom_Init("moov.udta.meta.ilst.\251mvc.data", optarg, AtomFlags_Data_UInt);
+            APar_Unified_atom_Put(atom, NULL, UTF8_iTunesStyle_256glyphLimited, data_value, 8);
+            break;
+        }
+
+        case Meta_movementName: {
+            APar_ScanAtoms(ISObasemediafile);
+            if ( !APar_assert(metadata_style == ITUNES_STYLE, 1, "movementName") ) {
+                break;
+            }
+            AtomicInfo* atom = APar_MetaData_atom_Init("moov.udta.meta.ilst.\251mvn.data", optarg, AtomFlags_Data_Text);
+            APar_Unified_atom_Put(atom, optarg, UTF8_iTunesStyle_256glyphLimited, 0, 0);
+            break;
+        }
+
+        case Meta_movementNumber: {
+            APar_ScanAtoms(ISObasemediafile);
+            if ( !APar_assert(metadata_style == ITUNES_STYLE, 1, "movementNumber") ) {
+                break;
+            }
+            uint8_t data_value = 0;
+            sscanf(optarg, "%" SCNu8, &data_value );
+            AtomicInfo* atom = APar_MetaData_atom_Init("moov.udta.meta.ilst.\251mvi.data", optarg, AtomFlags_Data_UInt);
+            APar_Unified_atom_Put(atom, NULL, UTF8_iTunesStyle_256glyphLimited, data_value, 8);
+            break;
+        }
+
+        case Meta_showWorkMovement: {
+            APar_ScanAtoms(ISObasemediafile);
+            if ( !APar_assert(metadata_style == ITUNES_STYLE, 1, "showWorkMovement") ) {
+                break;
+            }
+            AtomicInfo* atom = APar_MetaData_atom_Init("moov.udta.meta.ilst.shwm.data", optarg, AtomFlags_Data_Binary);
+            APar_Unified_atom_Put(atom, optarg, UTF8_iTunesStyle_256glyphLimited, 0, 0);
+            break;
+        }
+
+        case Meta_work: {
+            APar_ScanAtoms(ISObasemediafile);
+            if ( !APar_assert(metadata_style == ITUNES_STYLE, 1, "work") ) {
+                break;
+            }
+            AtomicInfo* atom = APar_MetaData_atom_Init("moov.udta.meta.ilst.\251wrk.data", optarg, AtomFlags_Data_Text);
+            APar_Unified_atom_Put(atom, optarg, UTF8_iTunesStyle_256glyphLimited, 0, 0);
+            break;
+        }
         } /* end switch */
     } /* end while */
 
